@@ -1,0 +1,16 @@
+.card {
+  display: flex;
+  margin: 5px;
+  border: 2px solid greenyellow;
+}
+
+a {
+  color: green;
+  padding: 5px;
+  text-decoration: none;
+}
+
+a:hover,
+a:selected {
+  color: grey;
+}
