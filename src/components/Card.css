@@ -1,6 +1,7 @@
 .card {
   display: flex;
-  margin: 5px;
+  justify-content: space-between;
+  margin: 10px;
   border: 2px solid greenyellow;
 }
 
@@ -8,6 +9,7 @@ a {
   color: green;
   padding: 5px;
   text-decoration: none;
+  background-color: azure;
 }
 
 a:hover,
