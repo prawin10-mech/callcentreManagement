@@ -3,7 +3,6 @@ import "./Card.css";
 
 const Card = ({ card }) => {
   const [backend, setBackend] = useState(true);
-  const [status, setStatus] = useState(true);
   const [balance, setBalance] = useState("0");
 
   const fetchBackend = async () => {
@@ -20,13 +19,13 @@ const Card = ({ card }) => {
         setBalance(data.balance);
       }
     } catch (err) {
-      // setStatus(false);
+      console.log(err);
     }
   };
 
   useEffect(() => {
     fetchBackend();
-  }, [card.backend]);
+  }, []);
 
   return (
     <div className="card">
@@ -46,7 +45,7 @@ const Card = ({ card }) => {
         <a href={`https://${card.frontend}.herokuapp.com`}>{card.frontend}</a>
       </p>
       <p>balance: {balance}</p>
-      <p>status: {status ? "active" : "backend is failed"}</p>
+      <p>status: {backend ? "active" : "backend is failed"}</p>
     </div>
   );
 };
