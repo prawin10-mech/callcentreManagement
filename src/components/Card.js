@@ -1,47 +1,49 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./Card.css";
 
 const Card = ({ card }) => {
-  const [balance, setBalance] = useState(false);
+  const [backend, setBackend] = useState(false);
 
-  const fetchBalance = async () => {
+  const fetchBackend = async () => {
     try {
-      const { data } = await axios.get(
-        `https://${card.backend}.herokuapp.com/stats/view`
+      const response = await fetch(
+        `https://${card.backend}.herokuapp.com/stats/view`,
+        {
+          method: "GET",
+        }
       );
-      console.log(data);
-      setBalance(data.balance); // assuming that the server returns a JSON object with a 'balance' property
+      const data = await response.json();
+      if (data.status) {
+        setBackend(true);
+      }
     } catch (err) {
-      console.log(err.response.data);
-      console.log(err.response.status);
-      console.log(err.response.headers);
+      console.log(err);
     }
   };
 
   useEffect(() => {
-    if (
-      card.backend === "callcenterbackend1" ||
-      card.backend === "callcenterbackend4"
-    ) {
-      setBalance(true);
-    }
+    fetchBackend();
+    setBackend(true);
   }, [card.backend]);
 
   return (
     <div className="card">
-      {balance && (
+      {backend ? (
         <p>
           <a href={`https://${card.backend}.herokuapp.com/stats/view`}>
             {card.backend}
           </a>
         </p>
-      )}
-      {balance && (
-        <p>
-          <a href={`https://${card.frontend}.herokuapp.com`}>{card.frontend}</a>
+      ) : (
+        <p style={{ "background-color": "red", color: "#fff" }}>
+          {card.backend}
         </p>
       )}
+
+      <p>
+        <a href={`https://${card.frontend}.herokuapp.com`}>{card.frontend}</a>
+      </p>
+      <p>status: {backend ? "active" : "inactive"}</p>
     </div>
   );
 };
