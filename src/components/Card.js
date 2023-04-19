@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Card.css";
 
 const Card = ({ card }) => {
-  const [backend, setBackend] = useState(false);
+  const [backend, setBackend] = useState(true);
 
   const fetchBackend = async () => {
     try {
@@ -13,8 +13,8 @@ const Card = ({ card }) => {
         }
       );
       const data = await response.json();
-      if (data.status) {
-        setBackend(true);
+      if (!data.status) {
+        setBackend(false);
       }
     } catch (err) {
       console.log(err);
@@ -23,7 +23,6 @@ const Card = ({ card }) => {
 
   useEffect(() => {
     fetchBackend();
-    setBackend(true);
   }, [card.backend]);
 
   return (
