@@ -4,6 +4,7 @@ import "./Card.css";
 const Card = ({ card }) => {
   const [backend, setBackend] = useState(true);
   const [status, setStatus] = useState(true);
+  const [balance, setBalance] = useState("0");
 
   const fetchBackend = async () => {
     try {
@@ -16,6 +17,7 @@ const Card = ({ card }) => {
       const data = await response.json();
       if (!data.status) {
         setBackend(false);
+        setBalance(data.balance);
       }
     } catch (err) {
       // setStatus(false);
@@ -43,7 +45,7 @@ const Card = ({ card }) => {
       <p>
         <a href={`https://${card.frontend}.herokuapp.com`}>{card.frontend}</a>
       </p>
-      <p>balance: 0</p>
+      <p>balance: {balance}</p>
       <p>status: {status ? "active" : "backend is failed"}</p>
     </div>
   );
