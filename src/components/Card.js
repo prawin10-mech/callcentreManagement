@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Card.css";
 
 const Card = ({ card }) => {
-  const [backend, setBackend] = useState(false);
+  const [backend, setBackend] = useState(true);
   const [balance, setBalance] = useState("0");
 
   const fetchBackend = async () => {
