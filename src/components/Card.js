@@ -3,6 +3,7 @@ import "./Card.css";
 
 const Card = ({ card }) => {
   const [backend, setBackend] = useState(true);
+  const [status, setStatus] = useState(true);
 
   const fetchBackend = async () => {
     try {
@@ -17,7 +18,7 @@ const Card = ({ card }) => {
         setBackend(false);
       }
     } catch (err) {
-      console.log(err);
+      // setStatus(false);
     }
   };
 
@@ -42,7 +43,8 @@ const Card = ({ card }) => {
       <p>
         <a href={`https://${card.frontend}.herokuapp.com`}>{card.frontend}</a>
       </p>
-      <p>status: {backend ? "active" : "inactive"}</p>
+      <p>balance: 0</p>
+      <p>status: {status ? "active" : "backend is failed"}</p>
     </div>
   );
 };
