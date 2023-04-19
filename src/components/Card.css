@@ -22,6 +22,8 @@ a:selected {
 @media (max-width: 768px) {
   .card {
     flex-wrap: wrap;
+    justify-content: space-between;
+    border-width: 1px;
   }
 
   .card p {
@@ -30,11 +32,11 @@ a:selected {
 
   a {
     display: block;
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 10px;
   }
 }
-
+/* 
 @media (max-width: 576px) {
   .card {
     flex-direction: column;
@@ -43,19 +45,17 @@ a:selected {
 
   .card p {
     font-size: 0.8rem;
-    margin: 5px 0;
   }
 
   a {
     font-size: 0.9rem;
     padding: 8px;
-    margin: 10px 0;
   }
 
   p:nth-of-type(2) {
     margin-top: 10px;
   }
-}
+} */
 
 /* Styles for screens larger than 1200px */
 @media (min-width: 1200px) {

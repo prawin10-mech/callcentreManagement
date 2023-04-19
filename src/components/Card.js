@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Card.css";
 
 const Card = ({ card }) => {
-  const [backend, setBackend] = useState(true);
+  const [backend, setBackend] = useState(false);
   const [balance, setBalance] = useState("0");
 
   const fetchBackend = async () => {
@@ -36,7 +36,13 @@ const Card = ({ card }) => {
           </a>
         </p>
       ) : (
-        <p style={{ "background-color": "red", color: "#fff" }}>
+        <p
+          style={{
+            "background-color": "red",
+            color: "#fff",
+            padding: "5px",
+          }}
+        >
           {card.backend}
         </p>
       )}
