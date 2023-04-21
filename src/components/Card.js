@@ -14,9 +14,10 @@ const Card = ({ card }) => {
         }
       );
       const data = await response.json();
-      if (!data.status) {
-        setBackend(false);
+      if (data) {
         setBalance(data.balance);
+      } else {
+        setBackend(false);
       }
     } catch (err) {
       console.log(err);
