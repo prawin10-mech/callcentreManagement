@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./Card.css";
 
 const Card = ({ card }) => {
@@ -7,14 +8,10 @@ const Card = ({ card }) => {
 
   const fetchBackend = async () => {
     try {
-      const response = await fetch(
-        `https://${card.backend}.herokuapp.com/stats/view`,
-        {
-          method: "GET",
-        }
+      const { data, status } = await axios.get(
+        `https://${card.backend}.herokuapp.com/stats/view`
       );
-      const data = await response.json();
-      if (data) {
+      if (status) {
         setBalance(data.balance);
       } else {
         setBackend(false);
