@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./Card.css";
 
 const Card = ({ card }) => {
@@ -49,7 +49,7 @@ const Card = ({ card }) => {
         <a href={`https://${card.frontend}.herokuapp.com`}>{card.frontend}</a>
       </p>
       <p>balance: {balance}</p>
-      <p>status: {backend ? "active" : "backend is failed"}</p>
+      <p>status: {backend ? "active" : "Messagebird is failed"}</p>
     </div>
   );
 };
